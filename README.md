@@ -1,4 +1,4 @@
-## Introduction to Bitcoin & Cryptocurrency Trading.
+## Introduction to Bitcoin & Cryptocurrency Trading
 ### What is Trading ?
 ### What is a ticker ?
 ### What is an exchange ?

@@ -1,7 +1,7 @@
 ## How to develop your own crypto trading bot
 *This guide will make you build a trading bot from scratch. A trading bot is a computer program that can automatically place orders to a market or exchange without the need for human intervention. Bots, automated trading strategies, are the future of investing, they are working for you 24/7 and never lose their focus.*
 
-## Introduction to Bitcoin & Cryptocurrency Trading
+## Introduction to cryptocurrency Trading
 
 ### What is Trading ?
 Trading simply means “exchanging one item for another”. In the financial markets, it’s actually buying shares, futures, options, swaps, bonds etc… or like in our case, an amount of cryptocurrency.
@@ -114,8 +114,31 @@ This will give you the required credentials for our bot :
 | exchange.secret  | 5e750039-465f-4ec4-abf0-cc6b9d04beb0  |
 
 ### Create your bot
+We are going to use [Cassandre trading bot framework](https://trading-bot.cassandre.tech/index.html), a spring boot stater we developed to automatically deal with exchanges, accounts, tickers, orders, strategy...
+
+You can create your bot thanks to our archectype with this simple command line :
+
+```
+mvn 	-B archetype:generate \
+	-DarchetypeGroupId=tech.cassandre.trading.bot \
+	-DarchetypeArtifactId=cassandre-trading-bot-spring-boot-starter-basic-ta4j-archetype \
+	-DarchetypeVersion=1.0.1-SNAPSHOT \
+	-DgroupId=tech.cassandre.trading.bot.tutorial.ta \
+	-DartifactId=crypto-trading-bot-tutorial \
+	-Dversion=1.0-SNAPSHOT \
+	-Dpackage=tech.cassandre.trading.bot.tutorial.ta
+```
+
+This will create a directory `crypto-trading-bot-tutorial` with the sources. 
+
+You can run your bot by typing : `mvn spring-boot:run` and you can package it with the command : `mvn package`.
+
+## Set bot parameters
+
 
 ## Create your strategy
+
+
 ### Add time series
 ### Add indicators
 ### Build a trading strategy

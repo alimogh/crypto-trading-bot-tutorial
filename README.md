@@ -96,7 +96,7 @@ If you are running Ubuntu like I do, this is what tools to install :
  
  * Useful tools (Optional) : `sudo apt-get -y install gnuplot wget jq`
 
-### Create a Kucoin account
+### Create a Kucoin account (sandbox)
 To test our bot, we will create a sandbox account, it will behave like a real account (assets, tickers, orders, API...) but, of course, with fake assets.
 
  * Go to [Kucoin sandbox](https://sandbox.kucoin.com/ucenter/signup) and create an account.
@@ -104,15 +104,14 @@ To test our bot, we will create a sandbox account, it will behave like a real ac
  * Click on your profile on the top right of the screen and then `API management`, you will have to setup security before accessing the `create API` menu.
  * Choose an API Name and API Passphrase. In the following configuration screen, set permissions to `̀General` and `Trade` and IP limit to `No Limit`.
  
-This will give you the required credentials :
+This will give you the required credentials for our bot : 
+
 | Name  | Description  |
 |-------|---------|
-| Passphrase  |   |
-| Key  |   |
-| Secret  |   |
-
-tutorial.trading.bot@cassandre.tech
-
+| exchange.username  | tutorial.trading.bot@cassandre.tech  |
+| exchange.passphrase  | dcLTbWM7ntsX7ih  |
+| exchange.key  | 5ed7f8d63118a80006ba9600  |
+| exchange.secret  | 5e750039-465f-4ec4-abf0-cc6b9d04beb0  |
 
 ### Create your bot
 

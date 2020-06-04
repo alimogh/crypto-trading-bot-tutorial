@@ -1,5 +1,5 @@
-## How to develop your own crypto trading bot
-*This guide will make you build a trading bot from scratch. A trading bot is a computer program that can automatically place orders to a market or exchange without the need for human intervention. Bots, automated trading strategies, are the future of investing, they are working for you 24/7 and never lose their focus.*
+## ABout this guide
+*This guide will make you build a trading bot from scratch. A trading bot is a computer program that can automatically place orders to a market or exchange without the need for human intervention.*
 
 ## Introduction to cryptocurrency Trading
 
@@ -133,11 +133,11 @@ This will create a directory `crypto-trading-bot-tutorial` with the sources.
 
 You can run your bot by typing : `mvn spring-boot:run` and you can package it with the command : `mvn package`.
 
-## Set bot parameters
+### Set bot parameters
 
+### How the bot works
 
 ## Create your strategy
-
 
 ### Add time series
 ### Add indicators

@@ -1,7 +1,8 @@
-## ABout this guide
+## How to develop your own crypto trading bot
 *This guide will make you build a trading bot from scratch. A trading bot is a computer program that can automatically place orders to a market or exchange without the need for human intervention.*
 
 ## Introduction to cryptocurrency Trading
+
 
 ### What is Trading ?
 Trading simply means “exchanging one item for another”. In the financial markets, it’s actually buying shares, futures, options, swaps, bonds etc… or like in our case, an amount of cryptocurrency.
@@ -64,7 +65,7 @@ On a chart, the horizontal axis is time, and the vertical axis is the price. The
  
 This is how it looks like :
 
-![GitHub Logo](assets/images/technical_analysis_chart.png)
+![Technical analysis chart](assets/images/technical_analysis_chart.png)
 
 After adding bars to this chart, you can draw lines to forecast future prices. For example, you can draw a line connecting the highest prices, expecting other traders will sell at this point.
 
@@ -122,7 +123,7 @@ You can create your bot thanks to our archectype with this simple command line :
 mvn 	-B archetype:generate \
 	-DarchetypeGroupId=tech.cassandre.trading.bot \
 	-DarchetypeArtifactId=cassandre-trading-bot-spring-boot-starter-basic-ta4j-archetype \
-	-DarchetypeVersion=1.0.1-SNAPSHOT \
+	-DarchetypeVersion=1.1.0 \
 	-DgroupId=tech.cassandre.trading.bot.tutorial.ta \
 	-DartifactId=crypto-trading-bot-tutorial \
 	-Dversion=1.0-SNAPSHOT \
@@ -134,8 +135,38 @@ This will create a directory `crypto-trading-bot-tutorial` with the sources.
 You can run your bot by typing : `mvn spring-boot:run` and you can package it with the command : `mvn package`.
 
 ### Set bot parameters
+Edit `src/main/resources/application.properties` and set the parameters : 
+
+```
+# Exchange configuration.
+cassandre.trading.bot.exchange.name=kucoin
+cassandre.trading.bot.exchange.sandbox=true
+#
+# Exchange credentials.
+cassandre.trading.bot.exchange.username=tutorial.trading.bot@cassandre.tech
+cassandre.trading.bot.exchange.passphrase=dcLTbWM7ntsX7ih
+cassandre.trading.bot.exchange.key=5ed7f8d63118a80006ba9600
+cassandre.trading.bot.exchange.secret=5e750039-465f-4ec4-abf0-cc6b9d04beb0
+#
+# Exchange API calls rates (ms or standard ISO 8601 duration like 'PT5S').
+cassandre.trading.bot.exchange.rates.account=2000
+cassandre.trading.bot.exchange.rates.ticker=2000
+cassandre.trading.bot.exchange.rates.order=2000
+```
+TODO Set the correct rates.
+
+In `Exchange configuration`, we choose `kucoin` as exchange ([supported exchanges list](https://github.com/knowm/XChange/wiki/Exchange-Support)), and we are in `sandbox` mode.
+
+In `Exchange credentials`, we set the parameters given by the exchange.
+
+In `Exchange API calls rates`, we define at which rate the bot will retrieve accounts, tickers and orders.
 
 ### How the bot works
+Cassandre allows you to create different kinds of strategy, in our case, we created a Technical analysis based strategy.
+
+
+
+
 
 ## Create your strategy
 

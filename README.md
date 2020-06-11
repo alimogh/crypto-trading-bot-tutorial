@@ -162,11 +162,23 @@ In `Exchange credentials`, we set the parameters given by the exchange.
 In `Exchange API calls rates`, we define at which rate the bot will retrieve accounts, tickers and orders.
 
 ### How the bot works
-Cassandre allows you to create different kinds of strategy, in our case, we created a Technical analysis based strategy.
+Cassandre allows you to create different kinds of strategy, in this tutorial, we choose a technical analysis based strategy.
 
+They way it works is very simple, your trading strategy is defined in the class `src/main/java/tech/cassandre/trading/bot/tutorial/ta/SimpleTa4jStrategy.java`.
 
+This class is annotated with [@CassandreStrategy](https://github.com/cassandre-tech/cassandre-trading-bot/blob/development/trading-bot-spring-boot-autoconfigure/src/main/java/tech/cassandre/trading/bot/strategy/CassandreStrategy.java) and implements [BasicTa4jCassandreStrategy](https://github.com/cassandre-tech/cassandre-trading-bot/blob/development/trading-bot-spring-boot-autoconfigure/src/main/java/tech/cassandre/trading/bot/strategy/BasicTa4jCassandreStrategy.java).
 
+Once your bot is running, Cassandre will do this : 
+ * Get the currency pair you want to work with by calling the method `getRequestedCurrencyPair()`.
+ * Get the number of bars you want to keep in your bar series by walling the method `getMaximumBarCount()`.
+ * Get the strategy you want to execute by calling the method `getStrategy()`.
+ * Cassandre will automatically retrieve accounts data, you can get them with `getAccounts()`.
+ * Cassandre will automatically retrieve orders data, you can get them with `getOrders()`.
+ * Cassandre will automatically retrieve tickers, add them to the bar series, and executes your strategy.
+ * If your strategy estimates that it's time to buy, the `shouldEnter()` method will be called.
+ * If your strategy estimates that it's time to sell, the `shouldExit()` method will be called. 
 
+*Note, if you want to do anything special on account, ticker or order updates, you can override ̀`onAccountUpdate(AccountDTO account)̀`, `onTickerUpdate(TickerDTO ticker)` or `onOrderUpdate(OrderDTO order)`.*
 
 ## Create your strategy
 

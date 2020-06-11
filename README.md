@@ -181,10 +181,38 @@ Once your bot is running, Cassandre will do this :
 *Note, if you want to do anything special on account, ticker or order updates, you can override ̀`onAccountUpdate(AccountDTO account)̀`, `onTickerUpdate(TickerDTO ticker)` or `onOrderUpdate(OrderDTO order)`.*
 
 ## Create your strategy
+We are going to implement a [Simple Moving Average strategy](https://tradingsim.com/blog/simple-moving-average/). To make it simple, it calculates the average of a selected range of prices, usually closing prices, by the number of periods in that range. It will be used to know if the asset price will continue or reverse a bull or bear trend.
 
-### Add time series
-### Add indicators
-### Build a trading strategy
+The first thing to do is to tell Cassandre which currency pair, you want to trade, in our case `BTC/USDT`. To do this, we just have to implement `CurrencyPairDTO getRequestedCurrencyPair()` :
+```
+@Override
+public CurrencyPairDTO getRequestedCurrencyPair() {
+	return new CurrencyPairDTO(BTC, USDT);
+}
+```
+
+The second step is to determine how much data we will keep. In our case, we will retrieve one ticker every X days for X days, this means X bar. We will define this by implementing `getMaximumBarCount()` : 
+```
+@Override
+public int getMaximumBarCount() {
+	return 8;
+}
+```
+
+The last step is to create the strategy by implementing `getStrategy()` :
+```
+@Override
+public Strategy getStrategy() {
+	ClosePriceIndicator closePrice = new ClosePriceIndicator(getSeries());
+	SMAIndicator sma = new SMAIndicator(closePrice, 3);
+	return new BaseStrategy(new UnderIndicatorRule(sma, closePrice), new OverIndicatorRule(sma, closePrice));
+}
+```
+ * Get the close price indicator from the series.
+ * Calculates the SMA on the close price with X bar count.
+ * Creates a strategy that : 
+   * sends a buy signal when the sma is under the close price.
+   * sends a sell signal when the sma is over the close price.
 
 ## Test your strategy
 ### Backtesting
